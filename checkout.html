@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - ShopEase</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/checkout.js" type="module" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <a href="index.html" class="logo">ShopEase</a>
+          <nav class="main-nav">
+            <ul class="nav-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Products</a></li>
+              <li><a href="cart.html">Cart</a></li>
+              <li><a href="about.html">About</a></li>
+            </ul>
+          </nav>
+          <div class="header-actions">
+            <button
+              class="btn-icon"
+              id="theme-toggle"
+              aria-label="Toggle theme"
+            >
+              <i class="icon-theme"></i>
+            </button>
+            <div class="search-container">
+              <button class="btn-icon" id="search-toggle" aria-label="Search">
+                <i class="icon-search"></i>
+              </button>
+              <div class="search-form" id="search-form">
+                <form id="product-search-form">
+                  <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search products..."
+                  />
+                  <button type="submit" class="search-submit">
+                    <i class="icon-search"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <a href="cart.html" class="btn-icon" aria-label="Cart">
+              <i class="icon-cart"></i>
+              <span class="cart-count" id="cart-count">0</span>
+            </a>
+            <button
+              class="btn-icon"
+              id="user-menu-toggle"
+              aria-label="User menu"
+            >
+              <i class="icon-user"></i>
+            </button>
+            <div class="user-menu" id="user-menu">
+              <div class="user-menu-header" id="user-menu-header">
+                <p>Sign in to your account</p>
+              </div>
+              <ul class="user-menu-links" id="user-menu-links">
+                <li><a href="login.html">Sign In</a></li>
+                <li><a href="register.html">Create Account</a></li>
+              </ul>
+            </div>
+            <button
+              class="btn-icon mobile-menu-toggle"
+              id="mobile-menu-toggle"
+              aria-label="Menu"
+            >
+              <i class="icon-menu"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-menu" id="mobile-menu">
+        <div class="container">
+          <ul class="mobile-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1 class="page-title">Checkout</h1>
+
+        <div class="checkout-content">
+          <div class="checkout-steps">
+            <div class="checkout-step active" data-step="1">
+              <div class="step-number">1</div>
+              <div class="step-title">Shipping</div>
+            </div>
+            <div class="checkout-step" data-step="2">
+              <div class="step-number">2</div>
+              <div class="step-title">Payment</div>
+            </div>
+            <div class="checkout-step" data-step="3">
+              <div class="step-number">3</div>
+              <div class="step-title">Review</div>
+            </div>
+          </div>
+
+          <div class="checkout-container">
+            <div class="checkout-main">
+              <div class="checkout-sections">
+                <!-- Shipping Step -->
+                <div class="checkout-section active" id="shipping-section">
+                  <h2 class="section-title">Shipping Information</h2>
+                  <form id="shipping-form" class="checkout-form">
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input
+                          type="text"
+                          id="first-name"
+                          name="firstName"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input
+                          type="text"
+                          id="last-name"
+                          name="lastName"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="address">Address</label>
+                      <input type="text" id="address" name="address" required />
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="zip-code">Zip Code</label>
+                        <input
+                          type="text"
+                          id="zip-code"
+                          name="zipCode"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="country">Country</label>
+                        <input
+                          type="text"
+                          id="country"
+                          name="country"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" required />
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <button type="submit" class="btn btn-primary">
+                        Continue to Payment
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Payment Step -->
+                <div class="checkout-section" id="payment-section">
+                  <h2 class="section-title">Payment Information</h2>
+                  <form id="payment-form" class="checkout-form">
+                    <div class="form-group">
+                      <label for="payment-method">Payment Method</label>
+                      <div class="payment-methods">
+                        <div class="payment-method-option">
+                          <input
+                            type="radio"
+                            id="credit-card"
+                            name="paymentMethod"
+                            value="credit"
+                            checked
+                          />
+                          <label for="credit-card">Credit Card</label>
+                        </div>
+                        <div class="payment-method-option">
+                          <input
+                            type="radio"
+                            id="paypal"
+                            name="paymentMethod"
+                            value="paypal"
+                          />
+                          <label for="paypal">PayPal</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="credit-card-fields">
+                      <div class="form-group">
+                        <label for="card-name">Name on Card</label>
+                        <input
+                          type="text"
+                          id="card-name"
+                          name="cardName"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input
+                          type="text"
+                          id="card-number"
+                          name="cardNumber"
+                          placeholder="XXXX XXXX XXXX XXXX"
+                          required
+                        />
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="expiry-date">Expiry Date</label>
+                          <input
+                            type="text"
+                            id="expiry-date"
+                            name="expiryDate"
+                            placeholder="MM/YY"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="cvv">CVV</label>
+                          <input
+                            type="text"
+                            id="cvv"
+                            name="cvv"
+                            placeholder="XXX"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-actions">
+                      <button
+                        type="button"
+                        class="btn btn-outline"
+                        id="back-to-shipping"
+                      >
+                        Back
+                      </button>
+                      <button type="submit" class="btn btn-primary">
+                        Continue to Review
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Review Step -->
+                <div class="checkout-section" id="review-section">
+                  <h2 class="section-title">Review Your Order</h2>
+
+                  <div class="review-section">
+                    <h3 class="review-title">Shipping Information</h3>
+                    <div class="review-content" id="shipping-review">
+                      <!-- Shipping details will be loaded dynamically -->
+                    </div>
+                  </div>
+
+                  <div class="review-section">
+                    <h3 class="review-title">Payment Information</h3>
+                    <div class="review-content" id="payment-review">
+                      <!-- Payment details will be loaded dynamically -->
+                    </div>
+                  </div>
+
+                  <div class="review-section">
+                    <h3 class="review-title">Order Items</h3>
+                    <div class="review-content" id="items-review">
+                      <!-- Order items will be loaded dynamically -->
+                    </div>
+                  </div>
+
+                  <div class="form-actions">
+                    <button
+                      type="button"
+                      class="btn btn-outline"
+                      id="back-to-payment"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      id="place-order"
+                    >
+                      Place Order
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout-sidebar">
+              <div class="order-summary" id="order-summary">
+                <!-- Order summary will be loaded dynamically -->
+                <div class="summary-loading">
+                  <div class="spinner"></div>
+                  <p>Loading order summary...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3 class="footer-title">ShopEase</h3>
+            <p class="footer-description">
+              Your one-stop shop for all your shopping needs. Quality products
+              at affordable prices.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link" aria-label="Facebook">
+                <i class="icon-facebook"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter">
+                <i class="icon-twitter"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram">
+                <i class="icon-instagram"></i>
+              </a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-title">Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Products</a></li>
+              <li><a href="categories.html">Categories</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-title">Customer Service</h3>
+            <ul class="footer-links">
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="shipping.html">Shipping & Returns</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms & Conditions</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-title">Newsletter</h3>
+            <p class="footer-description">
+              Subscribe to our newsletter for the latest updates and offers.
+            </p>
+            <form class="footer-newsletter-form">
+              <input type="email" placeholder="Your email" />
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="copyright">
+            &copy; <span id="current-year"></span> ShopEase. All rights
+            reserved.
+          </p>
+          <div class="payment-methods">
+            <img src="images/payment-visa.png" alt="Visa" />
+            <img src="images/payment-mastercard.png" alt="Mastercard" />
+            <img src="images/payment-paypal.png" alt="PayPal" />
+            <img src="images/payment-amex.png" alt="American Express" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Authentication Modal -->
+    <div class="modal" id="auth-modal">
+      <div class="modal-content">
+        <button class="modal-close" id="auth-modal-close">&times;</button>
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="login-tab">Login</button>
+          <button class="auth-tab" id="register-tab">Register</button>
+        </div>
+        <div class="auth-form-container">
+          <form id="login-form" class="auth-form">
+            <div class="form-group">
+              <label for="login-username">Username</label>
+              <input type="text" id="login-username" required />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input type="password" id="login-password" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Sign In
+            </button>
+          </form>
+          <form id="register-form" class="auth-form hidden">
+            <div class="form-group">
+              <label for="register-name">Full Name</label>
+              <input type="text" id="register-name" required />
+            </div>
+            <div class="form-group">
+              <label for="register-email">Email</label>
+              <input type="email" id="register-email" required />
+            </div>
+            <div class="form-group">
+              <label for="register-username">Username</label>
+              <input type="text" id="register-username" required />
+            </div>
+            <div class="form-group">
+              <label for="register-password">Password</label>
+              <input type="password" id="register-password" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Create Account
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification container -->
+    <div class="notifications-container" id="notifications-container"></div>
+    <!-- Order Success Modal -->
+    <div class="modal" id="order-success-modal">
+      <div class="modal-content success-modal-content">
+        <button class="modal-close" id="order-success-modal-close">
+          &times;
+        </button>
+        <div class="order-success">
+          <div class="success-icon">
+            <i class="icon-check-circle"></i>
+          </div>
+          <h2>Order Placed Successfully!</h2>
+          <p>
+            Thank you for your purchase. Your order has been received and is
+            being processed.
+          </p>
+          <p>A confirmation email has been sent to your email address.</p>
+          <div class="order-info">
+            <h3>Order #<span id="order-number"></span></h3>
+            <p>Date: <span id="order-date"></span></p>
+          </div>
+          <div class="success-actions">
+            <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Results -->
+    <div class="search-overlay" id="search-overlay"></div>
+    <div class="search-results" id="search-results">
+      <div class="search-results-header">
+        <h3>Search Results</h3>
+        <button class="close-search" id="close-search">&times;</button>
+      </div>
+      <div class="search-results-list" id="search-results-list">
+        <!-- Search results will be loaded dynamically -->
+      </div>
+    </div>
+  </body>
+</html>

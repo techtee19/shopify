@@ -1,0 +1,142 @@
+/* Header CSS File */
+
+.header {
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-sticky);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.main-nav {
+  display: none;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+}
+
+.nav-list li {
+  margin-left: var(--spacing-md);
+}
+
+.nav-list a {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.nav-list a:hover,
+.nav-list a.active {
+  color: var(--color-primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header-actions > * + * {
+  margin-left: 0.5rem;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--color-secondary);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  width: 12rem;
+  overflow: hidden;
+  display: none;
+  z-index: var(--z-index-dropdown);
+}
+
+.user-menu.active {
+  display: block;
+}
+
+.user-menu-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.user-menu-links {
+  list-style: none;
+}
+
+.user-menu-links a {
+  display: block;
+  padding: var(--spacing-md);
+  color: var(--color-text);
+  transition: var(--transition-fast);
+}
+
+.user-menu-links a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .user-menu-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu {
+  display: none;
+  padding: var(--spacing-md) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.mobile-menu.active {
+  display: block;
+}
+
+.mobile-nav-list {
+  list-style: none;
+}
+
+.mobile-nav-list a {
+  display: block;
+  padding: var(--spacing-md) 0;
+  color: var(--color-text);
+}
+
+@media (min-width: 768px) {
+  .main-nav {
+    display: block;
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+  }
+}

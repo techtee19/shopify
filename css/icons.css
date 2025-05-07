@@ -1,0 +1,147 @@
+/* Icons using Font Awesome */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+
+/* Icon mappings */
+.icon-theme {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+.icon-theme::before {
+  content: "\f186"; /* moon */
+}
+[data-theme="dark"] .icon-theme::before {
+  content: "\f185"; /* sun */
+}
+
+.icon-search::before {
+  content: "\f002"; /* search */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-cart::before {
+  content: "\f07a"; /* shopping-cart */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-user::before {
+  content: "\f007"; /* user */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-menu::before {
+  content: "\f0c9"; /* bars */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-close::before {
+  content: "\f00d"; /* times */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-heart::before {
+  content: "\f004"; /* heart */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-eye::before {
+  content: "\f06e"; /* eye */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-star-full::before {
+  content: "\f005"; /* star */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-star-half::before {
+  content: "\f5c0"; /* star-half */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-star-empty::before {
+  content: "\f005"; /* star */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 400;
+}
+
+.icon-truck::before {
+  content: "\f0d1"; /* truck */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-return::before {
+  content: "\f2ea"; /* sync-alt */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-shield::before {
+  content: "\f3ed"; /* shield-alt */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-trash::before {
+  content: "\f2ed"; /* trash-alt */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-check-circle::before {
+  content: "\f058"; /* check-circle */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.icon-facebook::before {
+  content: "\f39e"; /* facebook-f */
+  font-family: "Font Awesome 6 Brands";
+}
+
+.icon-twitter::before {
+  content: "\f099"; /* twitter */
+  font-family: "Font Awesome 6 Brands";
+}
+
+.icon-instagram::before {
+  content: "\f16d"; /* instagram */
+  font-family: "Font Awesome 6 Brands";
+}
+
+.icon-success::before {
+  content: "\f058"; /* check-circle */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--color-success);
+}
+
+.icon-error::before {
+  content: "\f057"; /* times-circle */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--color-error);
+}
+
+.icon-warning::before {
+  content: "\f071"; /* exclamation-triangle */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--color-warning);
+}
+
+.icon-info::before {
+  content: "\f05a"; /* info-circle */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: var(--color-info);
+}

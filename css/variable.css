@@ -1,0 +1,67 @@
+/* Variables CSS File */
+
+:root {
+  /* Colors */
+  --color-primary: #8a2be2; /* Purple */
+  --color-primary-hover: #7a1fd2;
+  --color-secondary: #f83e6a; /* Pink */
+  --color-secondary-hover: #e82e5a;
+  --color-background: #ffffff;
+  --color-background-dark: #121212;
+  --color-text: #333333;
+  --color-text-dark: #f1f1f1;
+  --color-text-light: #666666;
+  --color-text-light-dark: #aaaaaa;
+  --color-border: #e1e1e1;
+  --color-border-dark: #444444;
+  --color-success: #28a745;
+  --color-error: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-xxl: 3rem; /* 48px */
+
+  /* Border Radius */
+  --border-radius-sm: 0.25rem; /* 4px */
+  --border-radius-md: 0.5rem; /* 8px */
+  --border-radius-lg: 1rem; /* 16px */
+  --border-radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08);
+
+  /* Transitions */
+  --transition-base: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
+  --transition-slow: all 0.5s ease;
+
+  /* Z-index */
+  --z-index-dropdown: 100;
+  --z-index-sticky: 200;
+  --z-index-fixed: 300;
+  --z-index-modal-backdrop: 400;
+  --z-index-modal: 500;
+  --z-index-notification: 600;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --color-background: var(--color-background-dark);
+  --color-text: var(--color-text-dark);
+  --color-text-light: var(--color-text-light-dark);
+  --color-border: var(--color-border-dark);
+}
