@@ -37,25 +37,7 @@
       "shipping": {
         "freeShipping": true,
         "estimatedDelivery": "2-4 business days"
-      },
-      "reviews": [
-        {
-          "id": 1,
-          "author": "John D.",
-          "rating": 5,
-          "date": "2024-01-15",
-          "content": "These are the most comfortable sneakers I've ever owned. The quality is outstanding!",
-          "verified": true
-        },
-        {
-          "id": 2,
-          "author": "Sarah M.",
-          "rating": 4,
-          "date": "2024-01-10",
-          "content": "Great shoes, very stylish and comfortable. Only giving 4 stars because they run slightly large.",
-          "verified": true
-        }
-      ]
+      }
     },
     {
       "id": 2,
@@ -94,17 +76,7 @@
       "shipping": {
         "freeShipping": true,
         "estimatedDelivery": "3-5 business days"
-      },
-      "reviews": [
-        {
-          "id": 1,
-          "author": "Michael T.",
-          "rating": 5,
-          "date": "2024-01-12",
-          "content": "Perfect fit and great quality. The denim feels premium and the stitching is excellent.",
-          "verified": true
-        }
-      ]
+      }
     },
     {
       "id": 3,
@@ -143,17 +115,753 @@
       "shipping": {
         "freeShipping": true,
         "estimatedDelivery": "1-3 business days"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Wireless Earbuds Pro",
+      "price": 149.99,
+      "description": "High-quality wireless earbuds with noise cancellation and long battery life.",
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "brand": "TechGear",
+      "images": ["images/products/earbuds.jpg"],
+      "colors": ["Black", "White"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.7,
+        "count": 120
       },
-      "reviews": [
-        {
-          "id": 1,
-          "author": "Emily R.",
-          "rating": 5,
-          "date": "2024-01-14",
-          "content": "Best smartwatch I've ever owned. The battery life is incredible and the health features are very accurate.",
-          "verified": true
-        }
-      ]
+      "stock": 50,
+      "features": [
+        "Noise cancellation",
+        "Bluetooth 5.0",
+        "12-hour battery life"
+      ],
+      "specifications": {
+        "connectivity": "Bluetooth 5.0",
+        "battery": "12 hours",
+        "waterResistance": "IPX4"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "2-4 business days"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Leather Wallet",
+      "price": 49.99,
+      "description": "Premium leather wallet with multiple compartments for cards and cash.",
+      "category": "Accessories",
+      "subcategory": "Wallets",
+      "brand": "UrbanStyle",
+      "images": ["images/products/wallet.jpg"],
+      "colors": ["Brown", "Black"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.5,
+        "count": 80
+      },
+      "stock": 100,
+      "features": [
+        "Genuine leather",
+        "Compact design",
+        "Multiple compartments"
+      ],
+      "specifications": {
+        "material": "Leather",
+        "dimensions": "4.5 x 3.5 inches"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Fitness Tracker Band",
+      "price": 59.99,
+      "description": "Track your fitness goals with this lightweight and durable fitness tracker.",
+      "category": "Electronics",
+      "subcategory": "Wearables",
+      "brand": "TechGear",
+      "images": ["images/products/fitness-tracker.jpg"],
+      "colors": ["Black", "Blue", "Pink"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.3,
+        "count": 150
+      },
+      "stock": 60,
+      "features": ["Step tracking", "Heart rate monitor", "Water resistant"],
+      "specifications": {
+        "battery": "7 days",
+        "connectivity": "Bluetooth 4.0",
+        "waterResistance": "IP67"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "2-4 business days"
+      }
+    },
+    {
+      "id": 7,
+      "title": "Gaming Headset",
+      "price": 89.99,
+      "description": "Immersive gaming headset with surround sound and noise-canceling microphone.",
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "brand": "TechGear",
+      "images": ["images/products/gaming-headset.jpg"],
+      "colors": ["Black", "Red"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.6,
+        "count": 200
+      },
+      "stock": 40,
+      "features": [
+        "Surround sound",
+        "Noise-canceling mic",
+        "Comfortable ear cushions"
+      ],
+      "specifications": {
+        "connectivity": "Wired",
+        "compatibility": "PC, Console"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 8,
+      "title": "Portable Bluetooth Speaker",
+      "price": 79.99,
+      "description": "Compact and powerful Bluetooth speaker with excellent sound quality.",
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "brand": "TechGear",
+      "images": ["images/products/bluetooth-speaker.jpg"],
+      "colors": ["Black", "Blue", "Gray"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.8,
+        "count": 180
+      },
+      "stock": 70,
+      "features": ["Bluetooth 5.0", "10-hour battery life", "Water resistant"],
+      "specifications": {
+        "battery": "10 hours",
+        "connectivity": "Bluetooth 5.0",
+        "waterResistance": "IPX5"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "2-4 business days"
+      }
+    },
+    {
+      "id": 9,
+      "title": "Classic Leather Belt",
+      "price": 39.99,
+      "description": "Durable leather belt with a sleek buckle design, perfect for formal and casual wear.",
+      "category": "Accessories",
+      "subcategory": "Belts",
+      "brand": "UrbanStyle",
+      "images": ["images/products/leather-belt.jpg"],
+      "colors": ["Black", "Brown"],
+      "sizes": ["S", "M", "L", "XL"],
+      "rating": {
+        "rate": 4.4,
+        "count": 95
+      },
+      "stock": 80,
+      "features": ["Genuine leather", "Adjustable buckle", "Classic design"],
+      "specifications": {
+        "material": "Leather",
+        "width": "1.5 inches"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 10,
+      "title": "Stylish Sunglasses",
+      "price": 59.99,
+      "description": "UV-protected stylish sunglasses with a lightweight frame.",
+      "category": "Accessories",
+      "subcategory": "Sunglasses",
+      "brand": "UrbanStyle",
+      "images": ["images/products/sunglasses.jpg"],
+      "colors": ["Black", "Brown", "Gray"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.7,
+        "count": 120
+      },
+      "stock": 70,
+      "features": [
+        "UV protection",
+        "Lightweight frame",
+        "Scratch-resistant lenses"
+      ],
+      "specifications": {
+        "material": "Polycarbonate",
+        "lensWidth": "55mm"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "2-4 business days"
+      }
+    },
+    {
+      "id": 11,
+      "title": "Casual Backpack",
+      "price": 79.99,
+      "description": "Spacious and durable backpack with multiple compartments for everyday use.",
+      "category": "Accessories",
+      "subcategory": "Bags",
+      "brand": "UrbanStyle",
+      "images": ["images/products/backpack.jpg"],
+      "colors": ["Black", "Gray", "Navy"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.6,
+        "count": 140
+      },
+      "stock": 50,
+      "features": ["Water-resistant", "Padded straps", "Laptop compartment"],
+      "specifications": {
+        "material": "Polyester",
+        "capacity": "25L"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 12,
+      "title": "Wireless Keyboard and Mouse Combo",
+      "price": 49.99,
+      "description": "Ergonomic wireless keyboard and mouse combo for comfortable typing and navigation.",
+      "category": "Electronics",
+      "subcategory": "Accessories",
+      "brand": "TechGear",
+      "images": ["images/products/keyboard-mouse.jpg"],
+      "colors": ["Black", "White"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.5,
+        "count": 110
+      },
+      "stock": 60,
+      "features": ["Ergonomic design", "2.4GHz wireless", "Long battery life"],
+      "specifications": {
+        "connectivity": "Wireless",
+        "battery": "12 months (keyboard), 6 months (mouse)"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "2-4 business days"
+      }
+    },
+    {
+      "id": 13,
+      "title": "Stainless Steel Water Bottle",
+      "price": 29.99,
+      "description": "Insulated stainless steel water bottle to keep drinks hot or cold for hours.",
+      "category": "Accessories",
+      "subcategory": "Bottles",
+      "brand": "UrbanStyle",
+      "images": ["images/products/water-bottle.jpg"],
+      "colors": ["Silver", "Black", "Blue"],
+      "sizes": ["500ml", "750ml"],
+      "rating": {
+        "rate": 4.8,
+        "count": 90
+      },
+      "stock": 100,
+      "features": [
+        "Double-wall insulation",
+        "Leak-proof lid",
+        "Durable stainless steel"
+      ],
+      "specifications": {
+        "material": "Stainless Steel",
+        "capacity": "500ml / 750ml"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 14,
+      "title": "Noise-Canceling Over-Ear Headphones",
+      "price": 199.99,
+      "description": "Premium over-ear headphones with active noise cancellation and superior sound quality.",
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "brand": "TechGear",
+      "images": ["images/products/headphones.jpg"],
+      "colors": ["Black", "Silver"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.9,
+        "count": 150
+      },
+      "stock": 40,
+      "features": [
+        "Active noise cancellation",
+        "Bluetooth 5.0",
+        "20-hour battery life"
+      ],
+      "specifications": {
+        "connectivity": "Bluetooth 5.0",
+        "battery": "20 hours",
+        "weight": "250g"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "2-4 business days"
+      }
+    },
+    {
+      "id": 15,
+      "title": "Adjustable Office Chair",
+      "price": 249.99,
+      "description": "Ergonomic office chair with adjustable height, lumbar support, and breathable mesh back.",
+      "category": "Furniture",
+      "subcategory": "Chairs",
+      "brand": "ComfortSeating",
+      "images": ["images/products/office-chair.jpg"],
+      "colors": ["Black", "Gray"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.7,
+        "count": 85
+      },
+      "stock": 20,
+      "features": [
+        "Adjustable height",
+        "Lumbar support",
+        "Breathable mesh back"
+      ],
+      "specifications": {
+        "material": "Mesh and Metal",
+        "weightCapacity": "120kg"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "5-7 business days"
+      }
+    },
+    {
+      "id": 16,
+      "title": "Wooden Coffee Table",
+      "price": 199.99,
+      "description": "Stylish wooden coffee table with a modern design and durable finish.",
+      "category": "Furniture",
+      "subcategory": "Tables",
+      "brand": "HomeStyle",
+      "images": ["images/products/coffee-table.jpg"],
+      "colors": ["Walnut", "Oak"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.6,
+        "count": 60
+      },
+      "stock": 15,
+      "features": ["Modern design", "Durable finish", "Easy to assemble"],
+      "specifications": {
+        "material": "Solid Wood",
+        "dimensions": "120cm x 60cm x 45cm"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "5-7 business days"
+      }
+    },
+    {
+      "id": 17,
+      "title": "LED Desk Lamp",
+      "price": 39.99,
+      "description": "Energy-efficient LED desk lamp with adjustable brightness and flexible neck.",
+      "category": "Electronics",
+      "subcategory": "Lighting",
+      "brand": "BrightTech",
+      "images": ["images/products/desk-lamp.jpg"],
+      "colors": ["Black", "White"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.8,
+        "count": 140
+      },
+      "stock": 100,
+      "features": [
+        "Adjustable brightness",
+        "Flexible neck",
+        "Energy-efficient LED"
+      ],
+      "specifications": {
+        "power": "5W",
+        "dimensions": "40cm height"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 18,
+      "title": "4K Ultra HD Smart TV",
+      "price": 599.99,
+      "description": "Smart TV with 4K Ultra HD resolution, built-in streaming apps, and voice control.",
+      "category": "Electronics",
+      "subcategory": "Televisions",
+      "brand": "VisionTech",
+      "images": ["images/products/smart-tv.jpg"],
+      "colors": ["Black"],
+      "sizes": ["43-inch", "55-inch", "65-inch"],
+      "rating": {
+        "rate": 4.9,
+        "count": 200
+      },
+      "stock": 30,
+      "features": ["4K Ultra HD", "Built-in apps", "Voice control"],
+      "specifications": {
+        "resolution": "3840x2160",
+        "connectivity": "WiFi, HDMI, USB"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "5-7 business days"
+      }
+    },
+    {
+      "id": 19,
+      "title": "Electric Kettle",
+      "price": 49.99,
+      "description": "Fast-boiling electric kettle with auto shut-off and stainless steel body.",
+      "category": "Appliances",
+      "subcategory": "Kitchen",
+      "brand": "KitchenPro",
+      "images": ["images/products/electric-kettle.jpg"],
+      "colors": ["Silver", "Black"],
+      "sizes": ["1.5L"],
+      "rating": {
+        "rate": 4.7,
+        "count": 180
+      },
+      "stock": 80,
+      "features": ["Fast boiling", "Auto shut-off", "Stainless steel body"],
+      "specifications": {
+        "capacity": "1.5L",
+        "power": "1500W"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 20,
+      "title": "Cordless Vacuum Cleaner",
+      "price": 199.99,
+      "description": "Lightweight cordless vacuum cleaner with powerful suction and long battery life.",
+      "category": "Appliances",
+      "subcategory": "Cleaning",
+      "brand": "CleanMax",
+      "images": ["images/products/vacuum-cleaner.jpg"],
+      "colors": ["White", "Gray"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.8,
+        "count": 150
+      },
+      "stock": 50,
+      "features": ["Cordless design", "Powerful suction", "Long battery life"],
+      "specifications": {
+        "battery": "60 minutes",
+        "weight": "2.5kg"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "5-7 business days"
+      }
+    },
+    {
+      "id": 21,
+      "title": "Smartphone Stand",
+      "price": 19.99,
+      "description": "Adjustable smartphone stand for hands-free viewing and video calls.",
+      "category": "Accessories",
+      "subcategory": "Stands",
+      "brand": "TechGear",
+      "images": ["images/products/smartphone-stand.jpg"],
+      "colors": ["Black", "Silver"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.6,
+        "count": 120
+      },
+      "stock": 150,
+      "features": ["Adjustable angle", "Non-slip base", "Compact design"],
+      "specifications": {
+        "material": "Aluminum",
+        "dimensions": "15cm x 10cm"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "2-4 business days"
+      }
+    },
+    {
+      "id": 22,
+      "title": "Wireless Charging Pad",
+      "price": 29.99,
+      "description": "Fast wireless charging pad compatible with most smartphones and earbuds.",
+      "category": "Electronics",
+      "subcategory": "Chargers",
+      "brand": "TechGear",
+      "images": ["images/products/charging-pad.jpg"],
+      "colors": ["Black", "White"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.7,
+        "count": 140
+      },
+      "stock": 100,
+      "features": ["Fast charging", "Slim design", "Overheat protection"],
+      "specifications": {
+        "power": "10W",
+        "compatibility": "Qi-enabled devices"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 23,
+      "title": "Digital Kitchen Scale",
+      "price": 24.99,
+      "description": "Accurate digital kitchen scale with tare function and LCD display.",
+      "category": "Appliances",
+      "subcategory": "Kitchen",
+      "brand": "KitchenPro",
+      "images": ["images/products/kitchen-scale.jpg"],
+      "colors": ["Silver", "Black"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.8,
+        "count": 90
+      },
+      "stock": 80,
+      "features": ["Tare function", "LCD display", "Compact design"],
+      "specifications": {
+        "capacity": "5kg",
+        "accuracy": "1g"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 24,
+      "title": "Yoga Mat",
+      "price": 39.99,
+      "description": "Non-slip yoga mat with extra cushioning for comfort during workouts.",
+      "category": "Fitness",
+      "subcategory": "Mats",
+      "brand": "FitLife",
+      "images": ["images/products/yoga-mat.jpg"],
+      "colors": ["Blue", "Purple", "Green"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.7,
+        "count": 130
+      },
+      "stock": 100,
+      "features": ["Non-slip surface", "Extra cushioning", "Lightweight"],
+      "specifications": {
+        "material": "PVC",
+        "dimensions": "183cm x 61cm"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 25,
+      "title": "Electric Toothbrush",
+      "price": 59.99,
+      "description": "Rechargeable electric toothbrush with multiple cleaning modes.",
+      "category": "Personal Care",
+      "subcategory": "Oral Care",
+      "brand": "SmilePro",
+      "images": ["images/products/electric-toothbrush.jpg"],
+      "colors": ["White", "Blue"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.8,
+        "count": 110
+      },
+      "stock": 70,
+      "features": [
+        "Rechargeable battery",
+        "Multiple cleaning modes",
+        "Waterproof"
+      ],
+      "specifications": {
+        "batteryLife": "2 weeks",
+        "waterResistance": "IPX7"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 26,
+      "title": "Portable Power Bank",
+      "price": 49.99,
+      "description": "High-capacity portable power bank with dual USB ports for charging multiple devices.",
+      "category": "Electronics",
+      "subcategory": "Chargers",
+      "brand": "TechGear",
+      "images": ["images/products/power-bank.jpg"],
+      "colors": ["Black", "Silver"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.7,
+        "count": 150
+      },
+      "stock": 90,
+      "features": ["High capacity", "Dual USB ports", "Compact design"],
+      "specifications": {
+        "capacity": "20000mAh",
+        "output": "5V/2.4A"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 27,
+      "title": "Bluetooth Fitness Tracker",
+      "price": 69.99,
+      "description": "Advanced fitness tracker with heart rate monitoring and step tracking.",
+      "category": "Fitness",
+      "subcategory": "Wearables",
+      "brand": "FitLife",
+      "images": ["images/products/fitness-tracker.jpg"],
+      "colors": ["Black", "Pink", "Blue"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.6,
+        "count": 140
+      },
+      "stock": 60,
+      "features": ["Heart rate monitoring", "Step tracking", "Sleep tracking"],
+      "specifications": {
+        "batteryLife": "7 days",
+        "connectivity": "Bluetooth 4.0"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 28,
+      "title": "Stainless Steel Cookware Set",
+      "price": 149.99,
+      "description": "Durable stainless steel cookware set with non-stick coating.",
+      "category": "Appliances",
+      "subcategory": "Kitchen",
+      "brand": "KitchenPro",
+      "images": ["images/products/cookware-set.jpg"],
+      "colors": ["Silver"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.8,
+        "count": 100
+      },
+      "stock": 40,
+      "features": [
+        "Non-stick coating",
+        "Durable stainless steel",
+        "Dishwasher safe"
+      ],
+      "specifications": {
+        "material": "Stainless Steel",
+        "pieces": "10"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "5-7 business days"
+      }
+    },
+    {
+      "id": 29,
+      "title": "Foam Roller",
+      "price": 29.99,
+      "description": "High-density foam roller for muscle recovery and stretching.",
+      "category": "Fitness",
+      "subcategory": "Accessories",
+      "brand": "FitLife",
+      "images": ["images/products/foam-roller.jpg"],
+      "colors": ["Black", "Blue", "Gray"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.7,
+        "count": 90
+      },
+      "stock": 80,
+      "features": ["High-density foam", "Lightweight", "Durable"],
+      "specifications": {
+        "material": "EVA Foam",
+        "dimensions": "33cm x 14cm"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
+    },
+    {
+      "id": 30,
+      "title": "Smart Home Security Camera",
+      "price": 99.99,
+      "description": "WiFi-enabled smart home security camera with night vision and motion detection.",
+      "category": "Electronics",
+      "subcategory": "Security",
+      "brand": "VisionTech",
+      "images": ["images/products/security-camera.jpg"],
+      "colors": ["White", "Black"],
+      "sizes": ["One Size"],
+      "rating": {
+        "rate": 4.8,
+        "count": 120
+      },
+      "stock": 50,
+      "features": ["Night vision", "Motion detection", "Two-way audio"],
+      "specifications": {
+        "resolution": "1080p",
+        "connectivity": "WiFi"
+      },
+      "shipping": {
+        "freeShipping": true,
+        "estimatedDelivery": "3-5 business days"
+      }
     }
   ],
   "categories": [
