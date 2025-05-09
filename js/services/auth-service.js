@@ -1,125 +1,108 @@
-// Auth Service
-export class AuthService {
-  constructor() {
-    this.user = null;
-    this.API_URL = "https://fakestoreapi.com";
-    this.loadUser();
-  }
+// Auth Service - Handles authentication functionality
 
-  loadUser() {
-    const savedUser = localStorage.getItem("user");
-    if (savedUser) {
+import { UIService } from "./ui-services.js";
+import { dataService } from "./data-service.js";
+
+// Authentication Service
+export class AuthService {
+  static currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
+
+  // Initialize auth state from localStorage
+  static init() {
+    const user = localStorage.getItem("currentUser");
+    if (user) {
       try {
-        this.user = JSON.parse(savedUser);
+        this.currentUser = JSON.parse(user);
       } catch (error) {
-        console.error("Error parsing user from localStorage:", error);
-        this.user = null;
+        console.error("Error parsing user data:", error);
+        localStorage.removeItem("currentUser");
       }
     }
   }
 
-  saveUser(user) {
-    this.user = user;
-    localStorage.setItem("user", JSON.stringify(user));
-  }
-
-  getUser() {
-    return this.user;
-  }
-
-  isLoggedIn() {
-    return !!this.user;
-  }
-
-  async login(username, password) {
+  // Login user
+  static async login(email, password) {
     try {
-      // Try to use the API first
-      try {
-        const response = await fetch(`${this.API_URL}/auth/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username,
-            password,
-          }),
-        });
+      // Initialize data service if needed
+      await dataService.init();
 
-        if (!response.ok) {
-          throw new Error("Login failed");
-        }
-
-        const data = await response.json();
-
-        // In a real app, we would use the token to fetch user details
-        // For demo purposes, we'll create a mock user
+      // For demo purposes, we'll use a simple check
+      // In a real app, this would be handled by a backend
+      if (email === "demo@example.com" && password === "password") {
         const user = {
           id: 1,
-          username,
-          email: `${username}@example.com`,
-          name: {
-            firstname: "John",
-            lastname: "Doe",
-          },
-          token: data.token,
+          email: email,
+          name: "Demo User",
         };
 
-        this.saveUser(user);
-        return user;
-      } catch (apiError) {
-        console.log("API login failed, using mock login");
-
-        // For demo purposes, allow any login
-        const user = {
-          id: 1,
-          username,
-          email: `${username}@example.com`,
-          name: {
-            firstname: "John",
-            lastname: "Doe",
-          },
-          token: "mock-token-123456",
-        };
-
-        this.saveUser(user);
+        this.currentUser = user;
+        localStorage.setItem("currentUser", JSON.stringify(user));
         return user;
       }
+
+      throw new Error("Invalid email or password");
     } catch (error) {
-      console.error("Login error:", error);
+      console.error("Error during login:", error);
       throw error;
     }
   }
 
-  async register(username, email, password, name) {
+  // Register new user
+  static async register(userData) {
     try {
-      // In a real app, we would call the API to register the user
-      // For demo purposes, we'll create a mock user
+      // Initialize data service if needed
+      await dataService.init();
 
-      const [firstname, ...lastnameArray] = name.split(" ");
-      const lastname = lastnameArray.join(" ");
-
+      // For demo purposes, we'll simulate a successful registration
+      // In a real app, this would be handled by a backend
       const user = {
-        id: 1,
-        username,
-        email,
-        name: {
-          firstname,
-          lastname,
-        },
-        token: "mock-token-123456",
+        id: Math.floor(Math.random() * 1000000),
+        ...userData,
       };
 
-      this.saveUser(user);
+      this.currentUser = user;
+      localStorage.setItem("currentUser", JSON.stringify(user));
       return user;
     } catch (error) {
-      console.error("Registration error:", error);
+      console.error("Error during registration:", error);
       throw error;
     }
   }
 
-  logout() {
-    this.user = null;
-    localStorage.removeItem("user");
+  // Logout user
+  static logout() {
+    this.currentUser = null;
+    localStorage.removeItem("currentUser");
+  }
+
+  // Check if user is authenticated
+  static isAuthenticated() {
+    return this.currentUser !== null;
+  }
+
+  // Get current user
+  static getCurrentUser() {
+    return this.currentUser;
+  }
+
+  // Update user profile
+  static updateProfile(userData) {
+    try {
+      if (!this.currentUser) {
+        throw new Error("No user logged in");
+      }
+
+      // Update user data
+      const updatedUser = { ...this.currentUser, ...userData };
+
+      // Save updated user to local storage
+      this.currentUser = updatedUser;
+      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
+      return updatedUser;
+    } catch (error) {
+      console.error("Error updating user profile:", error);
+      throw error;
+    }
   }
 }

@@ -4,7 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Products - ShopEase</title>
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/variable.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/modals.css" />
+    <link rel="stylesheet" href="css/search.css" />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/shop.css" />
     <script src="js/shop.js" type="module" defer></script>
   </head>
   <body>
@@ -95,10 +105,9 @@
           <div class="filters-sidebar">
             <div class="filter-section">
               <h3 class="filter-title">Categories</h3>
-              <select id="category-filter" class="filter-select">
-                <option value="all">All Categories</option>
+              <div id="category-filters">
                 <!-- Categories will be added dynamically -->
-              </select>
+              </div>
             </div>
 
             <div class="filter-section">
@@ -106,36 +115,58 @@
               <div class="price-range-control">
                 <div class="price-inputs">
                   <div class="price-input-group">
-                    <label for="price-min">Min:</label>
+                    <label for="min-price">Min:</label>
                     <input
-                      type="range"
-                      id="price-min"
+                      type="number"
+                      id="min-price"
                       min="0"
                       max="1000"
                       step="10"
                       value="0"
                     />
-                    <span id="price-min-value">$0</span>
                   </div>
                   <div class="price-input-group">
-                    <label for="price-max">Max:</label>
+                    <label for="max-price">Max:</label>
                     <input
-                      type="range"
-                      id="price-max"
+                      type="number"
+                      id="max-price"
                       min="0"
                       max="1000"
                       step="10"
                       value="1000"
                     />
-                    <span id="price-max-value">$1000</span>
                   </div>
                 </div>
+                <button
+                  id="apply-price-filter"
+                  class="btn btn-primary btn-block"
+                >
+                  Apply Price Filter
+                </button>
+              </div>
+            </div>
+
+            <div class="filter-section">
+              <h3 class="filter-title">Rating</h3>
+              <div class="rating-filters">
+                <label>
+                  <input type="radio" name="rating" value="all" checked /> All
+                </label>
+                <label>
+                  <input type="radio" name="rating" value="4" /> 4+ Stars
+                </label>
+                <label>
+                  <input type="radio" name="rating" value="3" /> 3+ Stars
+                </label>
+                <label>
+                  <input type="radio" name="rating" value="2" /> 2+ Stars
+                </label>
               </div>
             </div>
 
             <div class="filter-section">
               <h3 class="filter-title">Sort By</h3>
-              <select id="sort-filter" class="filter-select">
+              <select id="sort-select" class="filter-select">
                 <option value="default">Default</option>
                 <option value="price-asc">Price: Low to High</option>
                 <option value="price-desc">Price: High to Low</option>
@@ -143,16 +174,46 @@
               </select>
             </div>
 
-            <button id="apply-filters" class="btn btn-primary btn-block">
-              Apply Filters
+            <div class="view-options">
+              <button class="view-option active" data-view="grid">
+                <i class="fas fa-th"></i>
+              </button>
+              <button class="view-option" data-view="list">
+                <i class="fas fa-list"></i>
+              </button>
+            </div>
+
+            <button id="clear-filters" class="btn btn-secondary btn-block">
+              Clear Filters
             </button>
           </div>
 
-          <div class="products-container" id="products-container">
-            <!-- Products will be loaded dynamically -->
-            <div class="products-loading">
+          <div class="products-section">
+            <div class="products-header">
+              <div class="products-count">
+                <span id="products-count">0</span> products found
+              </div>
+            </div>
+
+            <div id="products-grid" class="products-grid">
+              <!-- Products will be loaded dynamically -->
+            </div>
+
+            <div id="products-list" class="products-list hidden">
+              <!-- Products will be loaded dynamically -->
+            </div>
+
+            <div id="loading-indicator" class="loading-indicator hidden">
               <div class="spinner"></div>
               <p>Loading products...</p>
+            </div>
+
+            <div id="no-products-message" class="no-products-message hidden">
+              <p>No products found.</p>
+            </div>
+
+            <div id="pagination" class="pagination">
+              <!-- Pagination will be added dynamically -->
             </div>
           </div>
         </div>
@@ -216,10 +277,14 @@
             reserved.
           </p>
           <div class="payment-methods">
-            <img src="images/payment-visa.png" alt="Visa" />
-            <img src="images/payment-mastercard.png" alt="Mastercard" />
-            <img src="images/payment-paypal.png" alt="PayPal" />
-            <img src="images/payment-amex.png" alt="American Express" />
+            <img class="pay-img" src="images/visa.png" alt="Visa" />
+            <img class="pay-img" src="images/master.jpg" alt="Mastercard" />
+            <img class="pay-img" src="images/paypal.png" alt="PayPal" />
+            <img
+              class="pay-img"
+              src="images/american.png"
+              alt="American Express"
+            />
           </div>
         </div>
       </div>
@@ -320,6 +385,18 @@
       </div>
       <div class="search-results-list" id="search-results-list">
         <!-- Search results will be loaded dynamically -->
+      </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div class="modal" id="product-quick-view">
+      <div class="modal-content product-quick-view-content">
+        <button class="modal-close" id="product-quick-view-close">
+          &times;
+        </button>
+        <div class="product-quick-view-details">
+          <!-- Product quick view details will be loaded dynamically -->
+        </div>
       </div>
     </div>
   </body>

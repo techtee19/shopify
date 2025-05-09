@@ -3,15 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Details - ShopEase</title>
-    <link rel="stylesheet" href="css/main.css" />
+    <title>Product Details - Trendora</title>
+    <link rel="stylesheet" href="css/variable.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/modals.css" />
+    <link rel="stylesheet" href="css/search.css" />
+    <link rel="stylesheet" href="css/icons.css" />
     <script src="js/product.js" type="module" defer></script>
   </head>
   <body>
     <header class="header">
       <div class="container">
         <div class="header-content">
-          <a href="index.html" class="logo">ShopEase</a>
+          <a href="index.html" class="logo">Trendora</a>
           <nav class="main-nav">
             <ul class="nav-list">
               <li><a href="index.html">Home</a></li>
@@ -89,17 +98,28 @@
 
     <main>
       <div class="container">
-        <div class="breadcrumbs">
+        <div class="breadcrumbs" id="breadcrumbs">
           <a href="index.html">Home</a> &gt;
           <a href="shop.html">Products</a> &gt;
           <span id="product-breadcrumb">Product Details</span>
         </div>
 
         <div class="product-details-container" id="product-details-container">
-          <!-- Product details will be loaded dynamically -->
-          <div class="product-loading">
+          <div id="product-loading" class="product-loading">
             <div class="spinner"></div>
             <p>Loading product details...</p>
+          </div>
+          <div id="product-details" class="product-details hidden">
+            <!-- Product details will be loaded dynamically -->
+          </div>
+          <div id="product-description" class="product-description">
+            <!-- Product description will be loaded dynamically -->
+          </div>
+          <div id="product-reviews" class="product-reviews">
+            <!-- Product reviews will be loaded dynamically -->
+          </div>
+          <div id="related-products" class="related-products">
+            <!-- Related products will be loaded dynamically -->
           </div>
         </div>
       </div>
@@ -162,10 +182,14 @@
             reserved.
           </p>
           <div class="payment-methods">
-            <img src="images/visa.png" alt="Visa" />
-            <img src="images/payment-mastercard.png" alt="Mastercard" />
-            <img src="images/payment-paypal.png" alt="PayPal" />
-            <img src="images/payment-amex.png" alt="American Express" />
+            <img class="pay-img" src="images/visa.png" alt="Visa" />
+            <img class="pay-img" src="images/master.jpg" alt="Mastercard" />
+            <img class="pay-img" src="images/paypal.png" alt="PayPal" />
+            <img
+              class="pay-img"
+              src="images/american.png"
+              alt="American Express"
+            />
           </div>
         </div>
       </div>

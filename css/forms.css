@@ -84,9 +84,13 @@ textarea:focus {
   margin-top: var(--spacing-lg);
 }
 
+.pay-img {
+  width: 100%;
+}
+
 .payment-methods {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
 }

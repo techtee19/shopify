@@ -3,15 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Cart - ShopEase</title>
-    <link rel="stylesheet" href="css/main.css" />
+    <title>Your Cart - Trendora</title>
+    <link rel="stylesheet" href="css/variable.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/modals.css" />
+    <link rel="stylesheet" href="css/search.css" />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/cart.css" />
     <script src="js/cart.js" type="module" defer></script>
   </head>
   <body>
     <header class="header">
       <div class="container">
         <div class="header-content">
-          <a href="index.html" class="logo">ShopEase</a>
+          <a href="index.html" class="logo">Trendora</a>
           <nav class="main-nav">
             <ul class="nav-list">
               <li><a href="index.html">Home</a></li>
@@ -93,9 +103,51 @@
 
         <div id="cart-container">
           <!-- Cart will be loaded dynamically -->
-          <div class="cart-loading">
+          <div id="loading-indicator" class="loading-indicator">
             <div class="spinner"></div>
             <p>Loading your cart...</p>
+          </div>
+
+          <div id="cart-empty" class="empty-cart hidden">
+            <div class="empty-cart-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <p class="empty-cart-message">Your cart is empty</p>
+            <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+          </div>
+
+          <div id="cart-items" class="cart-items hidden">
+            <div id="cart-items-list">
+              <!-- Cart items will be loaded dynamically -->
+            </div>
+
+            <div class="cart-summary">
+              <div class="cart-summary-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0.00</span>
+              </div>
+              <div class="cart-summary-row">
+                <span>Shipping</span>
+                <span id="cart-shipping">$0.00</span>
+              </div>
+              <div class="cart-summary-row">
+                <span>Tax</span>
+                <span id="cart-tax">$0.00</span>
+              </div>
+              <div class="cart-summary-row">
+                <span>Total</span>
+                <span id="cart-total">$0.00</span>
+              </div>
+            </div>
+
+            <div class="cart-actions">
+              <button id="clear-cart" class="btn btn-secondary">
+                Clear Cart
+              </button>
+              <button id="checkout-btn" class="btn btn-primary">
+                Proceed to Checkout
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -105,7 +157,7 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-column">
-            <h3 class="footer-title">ShopEase</h3>
+            <h3 class="footer-title">Trendora</h3>
             <p class="footer-description">
               Your one-stop shop for all your shopping needs. Quality products
               at affordable prices.
@@ -154,14 +206,18 @@
         </div>
         <div class="footer-bottom">
           <p class="copyright">
-            &copy; <span id="current-year"></span> ShopEase. All rights
+            &copy; <span id="current-year"></span> Trendora. All rights
             reserved.
           </p>
           <div class="payment-methods">
-            <img src="images/visa.png" alt="Visa" />
-            <img src="images/payment-mastercard.png" alt="Mastercard" />
-            <img src="images/payment-paypal.png" alt="PayPal" />
-            <img src="images/payment-amex.png" alt="American Express" />
+            <img class="pay-img" src="images/visa.png" alt="Visa" />
+            <img class="pay-img" src="images/master.jpg" alt="Mastercard" />
+            <img class="pay-img" src="images/paypal.png" alt="PayPal" />
+            <img
+              class="pay-img"
+              src="images/american.png"
+              alt="American Express"
+            />
           </div>
         </div>
       </div>

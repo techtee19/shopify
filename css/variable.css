@@ -1,67 +1,76 @@
-/* Variables CSS File */
-
 :root {
   /* Colors */
-  --color-primary: #8a2be2; /* Purple */
-  --color-primary-hover: #7a1fd2;
-  --color-secondary: #f83e6a; /* Pink */
-  --color-secondary-hover: #e82e5a;
+  --color-primary: #6d28d9;
+  --color-primary-light: #8b5cf6;
+  --color-primary-dark: #5b21b6;
+  --color-secondary: #e11d48;
+  --color-secondary-light: #f43f5e;
+  --color-secondary-dark: #be123c;
+  --color-text: #1f2937;
+  --color-text-light: #6b7280;
   --color-background: #ffffff;
-  --color-background-dark: #121212;
-  --color-text: #333333;
-  --color-text-dark: #f1f1f1;
-  --color-text-light: #666666;
-  --color-text-light-dark: #aaaaaa;
-  --color-border: #e1e1e1;
-  --color-border-dark: #444444;
-  --color-success: #28a745;
-  --color-error: #dc3545;
-  --color-warning: #ffc107;
-  --color-info: #17a2b8;
+  --color-background-alt: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
 
   /* Typography */
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-family-heading: var(--font-family-base);
   --font-size-base: 16px;
-  --line-height-base: 1.5;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
 
   /* Spacing */
-  --spacing-xs: 0.25rem; /* 4px */
-  --spacing-sm: 0.5rem; /* 8px */
-  --spacing-md: 1rem; /* 16px */
-  --spacing-lg: 1.5rem; /* 24px */
-  --spacing-xl: 2rem; /* 32px */
-  --spacing-xxl: 3rem; /* 48px */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
 
-  /* Border Radius */
-  --border-radius-sm: 0.25rem; /* 4px */
-  --border-radius-md: 0.5rem; /* 8px */
-  --border-radius-lg: 1rem; /* 16px */
+  /* Borders */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
   --border-radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08);
-
-  /* Transitions */
-  --transition-base: all 0.3s ease;
-  --transition-fast: all 0.15s ease;
-  --transition-slow: all 0.5s ease;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
   /* Z-index */
-  --z-index-dropdown: 100;
-  --z-index-sticky: 200;
-  --z-index-fixed: 300;
-  --z-index-modal-backdrop: 400;
-  --z-index-modal: 500;
-  --z-index-notification: 600;
+  --z-index-dropdown: 10;
+  --z-index-sticky: 20;
+  --z-index-fixed: 30;
+  --z-index-modal: 40;
+  --z-index-popover: 50;
+  --z-index-tooltip: 60;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Layout */
+  --header-height: 4rem;
+  --container-max-width: 1200px;
 }
 
-/* Dark mode */
+/* Dark theme */
 [data-theme="dark"] {
-  --color-background: var(--color-background-dark);
-  --color-text: var(--color-text-dark);
-  --color-text-light: var(--color-text-light-dark);
-  --color-border: var(--color-border-dark);
+  --color-text: #f9fafb;
+  --color-text-light: #9ca3af;
+  --color-background: #111827;
+  --color-background-alt: #1f2937;
+  --color-border: #374151;
 }
