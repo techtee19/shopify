@@ -99,6 +99,23 @@ ol {
   padding-left: 1.5rem;
 }
 
+.pagination-item {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+}
+
+.pagination-item:hover,
+.pagination-item:active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
 /* Container */
 .container {
   width: 100%;

@@ -23,24 +23,24 @@ export class AuthService {
   // Login user
   static async login(email, password) {
     try {
-      // Initialize data service if needed
       await dataService.init();
 
-      // For demo purposes, we'll use a simple check
-      // In a real app, this would be handled by a backend
-      if (email === "demo@example.com" && password === "password") {
-        const user = {
-          id: 1,
-          email: email,
-          name: "Demo User",
-        };
+      // Get users from localStorage
+      const users = JSON.parse(localStorage.getItem("users")) || [];
 
-        this.currentUser = user;
-        localStorage.setItem("currentUser", JSON.stringify(user));
-        return user;
+      // Find user by email
+      const user = users.find(
+        (u) => u.email === email && u.password === password
+      );
+
+      if (!user) {
+        throw new Error("Invalid email or password");
       }
 
-      throw new Error("Invalid email or password");
+      // Set as current user
+      this.currentUser = user;
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      return user;
     } catch (error) {
       console.error("Error during login:", error);
       throw error;
@@ -50,16 +50,27 @@ export class AuthService {
   // Register new user
   static async register(userData) {
     try {
-      // Initialize data service if needed
       await dataService.init();
 
-      // For demo purposes, we'll simulate a successful registration
-      // In a real app, this would be handled by a backend
+      // Get existing users or initialize empty array
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      // Check if email already exists
+      if (users.some((user) => user.email === userData.email)) {
+        throw new Error("Email already registered");
+      }
+
+      // Create new user
       const user = {
         id: Math.floor(Math.random() * 1000000),
         ...userData,
       };
 
+      // Add to users array and save
+      users.push(user);
+      localStorage.setItem("users", JSON.stringify(users));
+
+      // Set as current user
       this.currentUser = user;
       localStorage.setItem("currentUser", JSON.stringify(user));
       return user;

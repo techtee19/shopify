@@ -26,7 +26,7 @@ let allProducts = [];
 let filteredProducts = [];
 let currentView = "grid";
 let currentPage = 1;
-const productsPerPage = 8;
+const productsPerPage = 9;
 let activeFilters = {
   categories: [],
   minPrice: 0,
@@ -216,75 +216,54 @@ function resetFilters() {
 
 // Apply filters to the product list
 function applyFilters() {
-  const products = document.querySelectorAll(".product-card");
-  const priceRange = document.getElementById("price-range");
-  const categoryCheckboxes = document.querySelectorAll(
-    ".category-checkbox:checked"
-  );
-  const ratingCheckboxes = document.querySelectorAll(
-    ".rating-checkbox:checked"
-  );
-  const sortSelect = document.getElementById("sort-select");
-
-  // Get filter values
-  const maxPrice = priceRange ? parseFloat(priceRange.value) : Infinity;
-  const selectedCategories = Array.from(categoryCheckboxes).map(
-    (cb) => cb.value
-  );
-  const selectedRatings = Array.from(ratingCheckboxes).map((cb) =>
-    parseFloat(cb.value)
-  );
-  const sortValue = sortSelect ? sortSelect.value : "default";
-
-  // Filter products
-  products.forEach((product) => {
-    const price = parseFloat(product.dataset.price);
-    const category = product.dataset.category;
-    const rating = parseFloat(product.dataset.rating);
-
-    const priceMatch = price <= maxPrice;
+  // Start with all products
+  filteredProducts = allProducts.filter((product) => {
+    // Category filter
     const categoryMatch =
-      selectedCategories.length === 0 || selectedCategories.includes(category);
-    const ratingMatch =
-      selectedRatings.length === 0 ||
-      selectedRatings.includes(Math.floor(rating));
+      activeFilters.categories.length === 0 ||
+      activeFilters.categories.includes(product.category);
 
-    if (priceMatch && categoryMatch && ratingMatch) {
-      product.style.display = "";
-    } else {
-      product.style.display = "none";
+    // Price filter
+    const priceMatch =
+      product.price >= activeFilters.minPrice &&
+      product.price <= activeFilters.maxPrice;
+
+    // Rating filter
+    let ratingMatch = true;
+    if (activeFilters.rating !== "all") {
+      ratingMatch =
+        product.rating &&
+        product.rating.rate >= parseFloat(activeFilters.rating);
     }
+
+    return categoryMatch && priceMatch && ratingMatch;
   });
 
   // Sort products
-  const productsContainer = document.querySelector(".products-grid");
-  if (productsContainer) {
-    const productsArray = Array.from(products);
-
-    productsArray.sort((a, b) => {
-      const priceA = parseFloat(a.dataset.price);
-      const priceB = parseFloat(b.dataset.price);
-      const ratingA = parseFloat(a.dataset.rating);
-      const ratingB = parseFloat(b.dataset.rating);
-
-      switch (sortValue) {
-        case "price-low-high":
-          return priceA - priceB;
-        case "price-high-low":
-          return priceB - priceA;
-        case "rating-high-low":
-          return ratingB - ratingA;
-        default:
-          return 0;
-      }
-    });
-
-    productsArray.forEach((product) => {
-      productsContainer.appendChild(product);
-    });
+  switch (activeFilters.sort) {
+    case "price-asc":
+      filteredProducts.sort((a, b) => a.price - b.price);
+      break;
+    case "price-desc":
+      filteredProducts.sort((a, b) => b.price - a.price);
+      break;
+    case "rating":
+      filteredProducts.sort((a, b) => {
+        const ratingA = a.rating?.rate || 0;
+        const ratingB = b.rating?.rate || 0;
+        return ratingB - ratingA;
+      });
+      break;
+    default:
+      // No sorting
+      break;
   }
 
-  // Update product count
+  // Reset to first page
+  currentPage = 1;
+
+  // Render products
+  renderProducts();
   updateProductCount();
 }
 
@@ -454,10 +433,11 @@ function renderPagination() {
 
   for (let i = startPage; i <= endPage; i++) {
     paginationHTML += `
-      <button class="pagination-item ${i === currentPage ? "active" : ""}" 
+      <button class="pagination-item ${i === currentPage ? "active" : ""} style="background-color: #000; color: #fff;"
               data-page="${i}">
         ${i}
       </button>
+      
     `;
   }
 

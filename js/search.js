@@ -11,6 +11,27 @@ export function initSearch() {
 
   let searchTimeout;
 
+  // Load all products from JSON once
+  let allProducts = [];
+  fetch("data/products.json")
+    .then((res) => {
+      if (!res.ok) throw new Error("Failed to load products.json");
+      return res.json();
+    })
+    .then((data) => {
+      if (!Array.isArray(data.products)) {
+        console.error("products.json 'products' is not an array!", data);
+        allProducts = [];
+      } else {
+        allProducts = data.products;
+        console.log("Loaded products:", allProducts); // Debug log
+      }
+    })
+    .catch((err) => {
+      console.error("Error loading products.json:", err);
+      allProducts = [];
+    });
+
   // Toggle search form
   searchToggle.addEventListener("click", () => {
     searchForm.classList.toggle("active");
@@ -62,60 +83,78 @@ export function initSearch() {
   });
 
   // Perform search
-  async function performSearch(query) {
-    try {
-      // Show loading state
+  function performSearch(query) {
+    // Show loading state
+    searchResultsList.innerHTML = `
+      <div class="search-loading">
+        <div class="spinner"></div>
+        <span>Searching...</span>
+      </div>
+    `;
+
+    // Show search results panel
+    searchResults.classList.add("active");
+    searchOverlay.classList.add("active");
+
+    // Only search if allProducts is a non-empty array
+    if (!Array.isArray(allProducts)) {
       searchResultsList.innerHTML = `
-        <div class="search-loading">
-          <div class="spinner"></div>
-          <span>Searching...</span>
+        <div class="no-results">
+          <i class="icon-search"></i>
+          <p>Products are not loaded. Please check your products.json file.</p>
         </div>
       `;
+      return;
+    }
+    if (allProducts.length === 0) {
+      searchResultsList.innerHTML = `
+        <div class="no-results">
+          <i class="icon-search"></i>
+          <p>No products found for "${query}"</p>
+        </div>
+      `;
+      return;
+    }
 
-      // Show search results panel
-      searchResults.classList.add("active");
-      searchOverlay.classList.add("active");
+    // Filter products
+    const lowerQuery = query.trim().toLowerCase();
+    const results = allProducts.filter(
+      (product) =>
+        product.title.toLowerCase().includes(lowerQuery) ||
+        product.description.toLowerCase().includes(lowerQuery) ||
+        (product.category &&
+          product.category.toLowerCase().includes(lowerQuery))
+    );
 
-      // Fetch search results
-      const response = await fetch(
-        `/api/search?q=${encodeURIComponent(query)}`
-      );
-      const data = await response.json();
-
-      // Display results
-      if (data.length === 0) {
-        searchResultsList.innerHTML = `
-          <div class="no-results">
-            <i class="icon-search"></i>
-            <p>No products found for "${query}"</p>
-          </div>
-        `;
-      } else {
-        searchResultsList.innerHTML = data
-          .map(
-            (product) => `
-          <a href="/product/${product.id}" class="search-result-item">
+    // Display results
+    if (results.length === 0) {
+      searchResultsList.innerHTML = `
+        <div class="no-results">
+          <i class="icon-search"></i>
+          <p>No products found for "${query}"</p>
+        </div>
+      `;
+    } else {
+      searchResultsList.innerHTML = results
+        .map(
+          (product) => `
+          <a href="product.html?id=${product.id}" class="search-result-item">
             <div class="search-result-image">
-              <img src="${product.image}" alt="${product.name}">
+              <img src="${
+                product.images && product.images[0] ? product.images[0] : ""
+              }" alt="${product.title}">
             </div>
             <div class="search-result-content">
-              <h4 class="search-result-title">${product.name}</h4>
-              <p class="search-result-price">$${product.price.toFixed(2)}</p>
-              <p class="search-result-category">${product.category}</p>
+              <h4 class="search-result-title">${product.title}</h4>
+              <p class="search-result-price">$$${
+                product.price ? product.price.toFixed(2) : ""
+              }</p>
+              <p class="search-result-category">${product.category || ""}</p>
             </div>
           </a>
         `
-          )
-          .join("");
-      }
-    } catch (error) {
-      console.error("Search error:", error);
-      searchResultsList.innerHTML = `
-        <div class="no-results">
-          <i class="icon-error"></i>
-          <p>An error occurred while searching. Please try again.</p>
-        </div>
-      `;
+        )
+        .join("");
     }
   }
 }

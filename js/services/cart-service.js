@@ -12,7 +12,7 @@ export class CartService {
       await dataService.init();
 
       // Get product details
-      const product = dataService.getProduct(productId);
+      const product = await dataService.getProduct(productId);
       if (!product) {
         throw new Error("Product not found");
       }
@@ -23,6 +23,7 @@ export class CartService {
       if (existingItem) {
         // Update quantity
         existingItem.quantity += quantity;
+        existingItem.total = existingItem.price * existingItem.quantity;
       } else {
         // Add new item
         this.cart.push({
@@ -31,6 +32,7 @@ export class CartService {
           price: product.price,
           image: product.images[0],
           quantity: quantity,
+          total: product.price * quantity,
         });
       }
 
@@ -60,6 +62,7 @@ export class CartService {
       const item = this.cart.find((item) => item.id === productId);
       if (item) {
         item.quantity = quantity;
+        item.total = item.price * quantity;
         this.saveCart();
       }
       return this.cart;
@@ -97,5 +100,18 @@ export class CartService {
 
   static saveCart() {
     localStorage.setItem("cart", JSON.stringify(this.cart));
+  }
+
+  static async checkout(orderData) {
+    // Simulate a delay and success
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.clearCart();
+        resolve({
+          success: true,
+          orderId: Math.floor(Math.random() * 1000000),
+        });
+      }, 500);
+    });
   }
 }

@@ -1,6 +1,7 @@
 // Cart page JavaScript
 
 import { CartService } from "./services/cart-service.js";
+import { AuthService } from "./services/auth-service.js";
 import { UIService } from "./services/ui-services.js";
 import { EventService } from "./services/event-service.js";
 
@@ -56,7 +57,7 @@ async function loadCart() {
     updateCartCount();
 
     // Check if cart is empty
-    if (cart.items.length === 0) {
+    if (cart.length === 0) {
       showEmptyCart();
       return;
     }
@@ -84,38 +85,57 @@ async function loadCart() {
 function renderCartItems(cart) {
   let html = "";
 
-  cart.items.forEach((item) => {
+  cart.forEach((item) => {
+    // Calculate total if not set
+    if (typeof item.total === "undefined") {
+      item.total = item.price * item.quantity;
+    }
+
     html += `
       <div class="cart-item" data-item-id="${item.id}">
         <div class="cart-item-product">
           <div class="cart-item-image">
-            <img src="${item.image}" alt="${item.title}">
+            <img src="${item.image}" alt="${item.title}" loading="lazy">
+            <div class="cart-item-badge">${item.quantity}x</div>
           </div>
           <div class="cart-item-details">
-            <h3>${item.title}</h3>
-            <p>Product ID: ${item.id}</p>
+            <h3 class="cart-item-title">${item.title}</h3>
+            <div class="cart-item-meta">
+              <span class="cart-item-id">#${item.id}</span>
+              <span class="cart-item-price">$${item.price.toFixed(
+                2
+              )} each</span>
+            </div>
           </div>
         </div>
-        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-        <div class="cart-item-quantity">
+        <div class="cart-item-actions">
           <div class="cart-quantity-selector">
             <button class="cart-quantity-btn quantity-decrease" data-item-id="${
               item.id
-            }">-</button>
+            }" aria-label="Decrease quantity">
+              <i class="fas fa-minus"></i>
+            </button>
             <input type="number" class="cart-quantity-input" value="${
               item.quantity
-            }" min="1" max="10" data-item-id="${item.id}">
+            }" min="1" max="10" data-item-id="${
+      item.id
+    }" aria-label="Item quantity">
             <button class="cart-quantity-btn quantity-increase" data-item-id="${
               item.id
-            }">+</button>
+            }" aria-label="Increase quantity">
+              <i class="fas fa-plus"></i>
+            </button>
           </div>
+          <div class="cart-item-total">
+            <span class="total-label">Total</span>
+            <span class="total-amount">$${item.total.toFixed(2)}</span>
+          </div>
+          <button class="cart-item-remove" data-item-id="${
+            item.id
+          }" aria-label="Remove item">
+            <i class="fas fa-trash-alt"></i>
+          </button>
         </div>
-        <div class="cart-item-total">$${item.total.toFixed(2)}</div>
-        <button class="cart-item-remove" data-item-id="${
-          item.id
-        }" aria-label="Remove item">
-          <i class="fas fa-trash-alt"></i>
-        </button>
       </div>
     `;
   });
@@ -128,7 +148,7 @@ function renderCartItems(cart) {
 
 // Update cart summary
 function updateCartSummary(cart) {
-  const subtotal = cart.total;
+  const subtotal = cart.reduce((total, item) => total + item.total, 0);
   const shipping = subtotal > 0 ? (subtotal > 50 ? 0 : 10) : 0;
   const tax = subtotal * 0.1; // 10% tax
   const total = subtotal + shipping + tax;
@@ -174,7 +194,7 @@ function handleQuantityDecrease(event) {
   if (quantity > 1) {
     quantity--;
     input.value = quantity;
-    updateCartItem(itemId, quantity);
+    updateQuantity(itemId, quantity);
   }
 }
 
@@ -189,7 +209,7 @@ function handleQuantityIncrease(event) {
   if (quantity < 10) {
     quantity++;
     input.value = quantity;
-    updateCartItem(itemId, quantity);
+    updateQuantity(itemId, quantity);
   }
 }
 
@@ -207,7 +227,7 @@ function handleQuantityChange(event) {
     event.currentTarget.value = quantity;
   }
 
-  updateCartItem(itemId, quantity);
+  updateQuantity(itemId, quantity);
 }
 
 // Handle remove item
@@ -221,13 +241,13 @@ function handleRemoveItem(event) {
 }
 
 // Update cart item
-function updateCartItem(itemId, quantity) {
+function updateQuantity(itemId, quantity) {
   try {
     // Update cart item
-    const cart = CartService.updateCartItem(itemId, quantity);
+    const cart = CartService.updateQuantity(itemId, quantity);
 
     // Update item total
-    const item = cart.items.find((item) => item.id === itemId);
+    const item = cart.find((item) => item.id === itemId);
     if (item) {
       const totalElement = document.querySelector(
         `.cart-item[data-item-id="${itemId}"] .cart-item-total`
@@ -265,7 +285,7 @@ function removeCartItem(itemId) {
       itemElement.remove();
 
       // Check if cart is empty
-      if (cart.items.length === 0) {
+      if (cart.length === 0) {
         showEmptyCart();
       } else {
         // Update cart summary
@@ -318,8 +338,12 @@ function clearCart() {
 // Checkout
 async function checkout() {
   try {
-    // Check if cart is empty
+    if (!AuthService.isAuthenticated()) {
+      UIService.showNotification("Please login to checkout", "error");
+    }
+
     if (CartService.getCartItemCount() === 0) {
+      // Check if cart is empty
       UIService.showNotification("Your cart is empty.", "error");
       return;
     }
@@ -333,7 +357,7 @@ async function checkout() {
     const orderData = {
       userId: 1, // Default user ID
       date: new Date().toISOString(),
-      products: CartService.getCart().items.map((item) => ({
+      products: CartService.getCart().map((item) => ({
         productId: item.id,
         quantity: item.quantity,
       })),
